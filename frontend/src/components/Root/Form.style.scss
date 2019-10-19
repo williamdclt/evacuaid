@@ -1,7 +1,8 @@
 @import '../../assets/variables.scss';
 
 form {
-  .bp3-form-group {
+  .bp3-form-group,
+  .bp3-radio-group {
     margin-bottom: 2rem;
   }
   .bp3-input {
@@ -10,4 +11,29 @@ form {
     border-radius: 50px !important;
     font-size: 18px !important;
   }
+
+  .bp3-control {
+    margin-bottom: 2rem;
+    .bp3-control-indicator {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 2rem;
+      padding: 0.2rem;
+    }
+  }
+}
+
+.bp3-control.bp3-radio input:checked ~ .bp3-control-indicator::before {
+  background-image: none !important;
+  background-color: $secondary-green;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  position: relative;
+  top: 0.1rem;
+  left: 0.1rem;
+}
+
+.bp3-control input:checked ~ .bp3-control-indicator {
+  background-color: inherit !important;
 }

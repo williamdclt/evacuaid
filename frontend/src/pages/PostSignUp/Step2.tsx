@@ -9,7 +9,7 @@ import './PostSignUp.style.scss';
 const Step1: FunctionComponent = props => {
   return (
     <div>
-      <Progress step={2} />
+      <Progress step={1} />
       <h2 className="page-title">Your address</h2>
       <p className="mb-md">First things first, what is your current address?</p>
       <form>
