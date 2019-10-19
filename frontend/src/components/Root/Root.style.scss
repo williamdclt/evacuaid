@@ -6,7 +6,7 @@
   height: 100%;
   width: 100vw;
   overflow-y: auto;
-  background-color: rgba($secondary-green, 0.1);
+  background-color: $page-background;
 }
 
 .page-content {
@@ -31,6 +31,12 @@
   }
 }
 
+strong {
+  color: $primary-green;
+  font-style: normal;
+  font-weight: normal;
+}
+
 em {
   color: $primary-pink;
   font-style: normal;
@@ -49,10 +55,18 @@ em {
   float: right;
 }
 
+.mb-sm {
+  margin-bottom: 1rem !important;
+}
+
 .mb-md {
   margin-bottom: 2rem !important;
 }
 
 .mb-lg {
   margin-bottom: 4rem !important;
+}
+
+.bold {
+  font-weight: bold !important;
 }
