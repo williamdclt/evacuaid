@@ -18,12 +18,14 @@
   },
   "dependencies": {
     "aws-sdk": "2.519.0",
+    "node-fetch": "^2.6.0",
     "source-map-support": "0.5.10",
     "uuid": "3.3.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.17",
     "@types/node": "10.12.18",
+    "@types/node-fetch": "^2.5.2",
     "@types/uuid": "3.4.5",
     "@typescript-eslint/eslint-plugin": "2.0.0",
     "@typescript-eslint/parser": "2.0.0",
