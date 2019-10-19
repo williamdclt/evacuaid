@@ -8,36 +8,39 @@ import './PostSignUp.style.scss';
 import CheckboxGroup from './CheckboxGroup';
 import GraphicCheckbox from './GraphicCheckbox';
 
-enum RESOURCES {
-  FIRST_AID = 'FIRST_AID',
-  FOOD_WATER = 'FOOD_WATER',
+enum NEED_RESOURCES {
+  PHARMACY = 'FIRST_AID',
+  DOCTOR = 'FOOD_WATER',
   TRANSPORT = 'TRANSPORT',
 }
 
-const Step4: FunctionComponent = props => {
+const Step5: FunctionComponent = props => {
   const [offeredResources, setOfferedResources] = useState<string[]>([]);
 
   return (
     <div>
-      <Progress step={4} />
-      <h2 className="page-title">What resources can I offer?</h2>
+      <Progress step={5} />
+      <h2 className="page-title">What resources would I need?</h2>
       <p className="mb-md">
-        What kind of resources can you offer evacuees? If you cannot currently offer any resources,
-        just click 'Next'.
+        Other than the essentials (food and shelter) is there anything that you would need as an
+        evacuee? If you do not need anything extra, then click 'Next'.
       </p>
       <p className={'mb-md ' + TEXT_MUTED}>Select as many as applicable.</p>
       <form>
         <CheckboxGroup value={offeredResources} onChange={setOfferedResources}>
-          <GraphicCheckbox label="Basic First Aid" value={RESOURCES.FIRST_AID} />
-          <GraphicCheckbox label="Food and Water" value={RESOURCES.FOOD_WATER} />
-          <GraphicCheckbox label="Transport" value={RESOURCES.TRANSPORT} />
+          <GraphicCheckbox label="Proximity to pharmacy" value={NEED_RESOURCES.PHARMACY} />
+          <GraphicCheckbox
+            label="Proximity to medical professionals"
+            value={NEED_RESOURCES.DOCTOR}
+          />
+          <GraphicCheckbox label="Transport" value={NEED_RESOURCES.TRANSPORT} />
         </CheckboxGroup>
       </form>
       <div className="nav-buttons">
-        <Link to={PATHS.POST_SIGNUP + '/3/bis'}>
+        <Link to={PATHS.POST_SIGNUP + '/4'}>
           <Button>←&nbsp;&nbsp;Previous</Button>
         </Link>
-        <Link to={PATHS.POST_SIGNUP + '/5'}>
+        <Link to={PATHS.POST_SIGNUP + '/finish'}>
           <Button>Next&nbsp;&nbsp;→</Button>
         </Link>
       </div>
@@ -45,4 +48,4 @@ const Step4: FunctionComponent = props => {
   );
 };
 
-export default Step4;
+export default Step5;
