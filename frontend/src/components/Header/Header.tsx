@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<RouteComponentProps & IHeaderProps> = ({
       </Link>
     ) : (
       <Link
-        href={`https://evacuaid.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=${
+        href={`https://evacuaid-prod.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=${
           process.env.REACT_APP_COGNITO_APP_CLIENT_ID
         }&redirect_uri=${window.location.origin}/callback`}
       >
