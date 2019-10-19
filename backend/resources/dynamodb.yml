@@ -12,6 +12,8 @@ Resources:
           AttributeType: S
         - AttributeName: longitude
           AttributeType: S
+        - AttributeName: objectType
+          AttributeType: S
       KeySchema:
         - AttributeName: uuid
           KeyType: HASH
@@ -34,4 +36,18 @@ Resources:
               KeyType: HASH
           Projection:
             ProjectionType: 'ALL'
+        - IndexName: objectTypeIndex
+          KeySchema:
+            - AttributeName: objectType
+              KeyType: HASH
+          Projection:
+            ProjectionType: 'ALL'
       BillingMode: PAY_PER_REQUEST
+Outputs:
+  FireTable:
+    Value:
+      Fn::GetAtt:
+        - Table
+        - Arn
+    Export:
+      Name: evacuaid-backend-dev-table

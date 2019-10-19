@@ -16,9 +16,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "Fn::GetAtt": [Table, Arn]
-environment:
-  tableName: evacuaid-backend-dev-table
+        - { "Fn::ImportValue": evacuaid-backend-dev-table }
 
 functions:
   fire-data-cron:
