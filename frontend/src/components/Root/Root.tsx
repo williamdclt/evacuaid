@@ -11,6 +11,7 @@ import Header from 'components/Header';
 import './Root.style.scss';
 
 import './Root.style.scss';
+import './Form.style.scss';
 import 'normalize.css/normalize.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';

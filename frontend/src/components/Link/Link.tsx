@@ -15,8 +15,6 @@ interface ILink {
 }
 
 const Link = styled.a<ILink>`
-  padding: ${getSpacing(2)} ${getSpacing(4)};
-
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.main};
   font-size: inherit;

@@ -23,7 +23,7 @@ const Progress: FunctionComponent<IProps> = ({ step, ...progressProps }) => {
         stripes={false}
         intent="success"
         {...progressProps}
-        value={1 / NUMBER_OF_STEPS}
+        value={step / NUMBER_OF_STEPS}
       />
     </ProgressContainer>
   );

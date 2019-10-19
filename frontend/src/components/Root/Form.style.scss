@@ -1,0 +1,13 @@
+@import '../../assets/variables.scss';
+
+form {
+  .bp3-form-group {
+    margin-bottom: 2rem;
+  }
+  .bp3-input {
+    padding: 2rem 2rem;
+    background-color: rgba($secondary-green, 0.1);
+    border-radius: 50px !important;
+    font-size: 18px !important;
+  }
+}
