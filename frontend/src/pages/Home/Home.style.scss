@@ -16,7 +16,7 @@
     &__item {
       width: 18rem;
       height: 8rem;
-      border: 1px #ddd solid;
+      border: 1px #bbb solid;
       padding: 2rem;
       margin-bottom: 2rem;
       margin-left: 1.5rem;
@@ -24,6 +24,29 @@
       &--placeholder {
         border: none;
       }
+    }
+  }
+
+  &__risk {
+    &__caption {
+      margin-top: 1rem;
+      font-weight: 300;
+      color: $primary-green;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__score {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
     }
   }
 }
