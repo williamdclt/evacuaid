@@ -1,0 +1,119 @@
+service:
+  name: evacuaid-backend
+
+package:
+  exclude:
+    - .git/**
+    - .gitignore
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: eu-west-2
+  stage: ${opt:stage, 'dev'}
+  usagePlan:
+    quota:
+      limit: 5000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - 'Fn::GetAtt': [Table, Arn]
+  environment:
+    tableName: ${self:custom.dynamodbTableName}
+
+functions:
+  hello:
+    handler: hello.main
+    events:
+      - http:
+          method: get
+          path: hello
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  create:
+    handler: create.main
+    events:
+      - http:
+          method: post
+          path: items
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  list:
+    handler: list.main
+    events:
+      - http:
+          method: get
+          path: items
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  get:
+    handler: get.main
+    events:
+      - http:
+          method: get
+          path: items/{id}
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  update:
+    handler: update.main
+    events:
+      - http:
+          method: put
+          path: items/{id}
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  delete:
+    handler: delete.main
+    events:
+      - http:
+          method: delete
+          path: items/{id}
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+
+custom:
+  dynamodbTableName: ${self:service.name}-${self:provider.stage}-table
+  cognitoUserPoolName: ${self:service.name}-${self:provider.stage}-user-pool
+  cognitoUserPoolClientName: ${self:service.name}-${self:provider.stage}-user-pool-client
+  cognitoIdentityPoolName: ${self:provider.stage}IdentityPool
+  # we must change this last name to be more specific but we have a problem:
+  # indentity pool name can only contain numbers, letters, underscores and spaces
+
+resources:
+  - ${file(resources/api-gateway-errors.yml)}
+  - ${file(resources/dynamodb.yml)}
+  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}

@@ -1,0 +1,16 @@
+Resources:
+    Table:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            TableName: ${self:custom.dynamodbTableName}
+            AttributeDefinitions:
+                - AttributeName: username
+                  AttributeType: S
+                - AttributeName: uuid
+                  AttributeType: S
+            KeySchema:
+                - AttributeName: username
+                  KeyType: HASH
+                - AttributeName: uuid
+                  KeyType: RANGE
+            BillingMode: PAY_PER_REQUEST

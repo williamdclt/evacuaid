@@ -1,0 +1,205 @@
+version: 2.1
+
+orbs:
+  skip: theodo/skip@0.0.4
+
+executors:
+  defaults_typescript:
+    docker:
+      - image: circleci/node:12.9
+
+commands:
+  yarn-install:
+    parameters:
+      workspace:
+        type: string
+    steps:
+      - checkout
+      - skip/skip_unchanged:
+          paths: << parameters.workspace >>
+      - attach_workspace:
+          at: ~/evacuAid/<< parameters.workspace >>
+      - restore_cache:
+          key: node-modules-cache-{{ checksum "<< parameters.workspace >>/yarn.lock" }}
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Install front dependencies
+          command: yarn
+      - save_cache:
+          key: node-modules-cache-{{ checksum "<< parameters.workspace >>/yarn.lock" }}
+          paths:
+            - << parameters.workspace >>/node_modules
+      - persist_to_workspace:
+          root: ~/evacuAid/<< parameters.workspace >>
+          paths:
+            - node_modules
+            - .env
+
+  yarn-tests:
+    parameters:
+      workspace:
+        type: string
+    steps:
+      - checkout
+      - skip/skip_unchanged:
+          paths: << parameters.workspace >>
+      - attach_workspace:
+          at: ~/evacuAid/<< parameters.workspace >>
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Unit test with coverage
+          command: yarn test:coverage
+      - store_artifacts:
+          path: << parameters.workspace >>/coverage
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Run Typescript checker
+          command: yarn tsc
+
+  yarn-linter:
+    parameters:
+      workspace:
+        type: string
+    steps:
+      - checkout
+      - skip/skip_unchanged:
+          paths: << parameters.workspace >>
+      - attach_workspace:
+          at: ~/evacuAid/<< parameters.workspace >>
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Run linter
+          command: yarn lint
+      - store_artifacts:
+          path: << parameters.workspace >>/coverage
+
+  yarn-audit:
+    parameters:
+      workspace:
+        type: string
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/evacuAid/<< parameters.workspace >>
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Check dependencies
+          command: yarn audit-dependencies
+
+jobs:
+  yarn-install-front:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    steps:
+      - yarn-install:
+          workspace: frontend
+
+  react-tests:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: test
+    steps:
+      - yarn-tests:
+          workspace: frontend
+
+  react-bundlesize:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: prod
+    steps:
+      - checkout
+      - skip/skip_unchanged:
+          paths: frontend
+      - attach_workspace:
+          at: ~/evacuAid/frontend
+      - run:
+          working_directory: frontend
+          name: Check bundle size
+          command: yarn build && ./node_modules/.bin/bundlesize
+      - store_artifacts:
+          path: frontend/coverage
+
+  react-linter:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: prod
+    steps:
+      - skip/skip_unchanged:
+          paths: frontend
+      - yarn-linter:
+          workspace: frontend
+      - run:
+          working_directory: frontend
+          name: Run css linter
+          command: yarn lint-style
+      - store_artifacts:
+          path: frontend/coverage
+
+  react-audit:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: prod
+    steps:
+      - yarn-audit:
+          workspace: frontend
+  yarn-install-back:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    steps:
+      - yarn-install:
+          workspace: backend
+
+  node-tests:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: test
+    steps:
+      - yarn-tests:
+          workspace: backend
+
+  node-linter:
+    executor: defaults_typescript
+    working_directory: ~/evacuAid
+    environment:
+      NODE_ENV: prod
+    steps:
+      - yarn-linter:
+          workspace: backend
+
+workflows:
+  version: 2
+  stack:
+    jobs:
+      - yarn-install-back
+      - node-tests:
+          requires:
+            - yarn-install-back
+      - node-linter:
+          requires:
+            - yarn-install-back
+      - yarn-install-front
+      - react-tests:
+          requires:
+            - yarn-install-front
+      - react-bundlesize:
+          requires:
+            - yarn-install-front
+      - react-linter:
+          requires:
+            - yarn-install-front
+  audit-dependencies:
+    triggers:
+      - schedule:
+          # jobs start at 00h00 every Monday, test made for master
+          cron: "0 0 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - react-audit
