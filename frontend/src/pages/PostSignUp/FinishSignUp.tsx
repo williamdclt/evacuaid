@@ -1,23 +1,11 @@
-import React, { FunctionComponent, useState, useCallback } from 'react';
+import React, { FunctionComponent } from 'react';
 import Progress from './Progress';
 import Button from 'components/Button';
-import { RadioGroup, Radio } from '@blueprintjs/core';
-import { TEXT_MUTED } from '@blueprintjs/core/lib/esm/common/classes';
 import { Link } from 'react-router-dom';
 import { PATHS } from 'routes';
 import './PostSignUp.style.scss';
-import CheckboxGroup from './CheckboxGroup';
-import GraphicCheckbox from './GraphicCheckbox';
-
-enum NEED_RESOURCES {
-  PHARMACY = 'FIRST_AID',
-  DOCTOR = 'FOOD_WATER',
-  TRANSPORT = 'TRANSPORT',
-}
 
 const FinishSignUp: FunctionComponent = props => {
-  const [offeredResources, setOfferedResources] = useState<string[]>([]);
-
   return (
     <div>
       <Progress step={6} />

@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useState, useCallback } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import Progress from './Progress';
 import Button from 'components/Button';
-import { RadioGroup, Radio } from '@blueprintjs/core';
 import { TEXT_MUTED } from '@blueprintjs/core/lib/esm/common/classes';
 import { Link } from 'react-router-dom';
 import { PATHS } from 'routes';
