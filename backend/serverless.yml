@@ -1,5 +1,5 @@
 service:
-  name: evacuaid-backend
+  name: evacuaid-backend-ben10
 
 package:
   exclude:
@@ -38,6 +38,7 @@ provider:
   environment:
     tableName: ${self:custom.dynamodbTableName}
     TwilioAuthToken: ${ssm:evacuaid-twilio-authToken~true}
+    TwilioSidToken: ${ssm:evacuaid-twilio-sid~true}
     TwilioScriptUrl: ${ssm:twilio-voice-script}
     TwilioOutNumber: ${ssm:evacuAid-twilio-out}
     TwilioTestNumber: ${ssm:evacuaid-test-number}
@@ -64,6 +65,9 @@ functions:
             type: COGNITO_USER_POOLS
             authorizerId:
               Ref: ApiGatewayAuthorizer
+  alert:
+    handler: alert.main
+
   list:
     handler: list.main
     events:
