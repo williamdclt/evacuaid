@@ -8,7 +8,7 @@ import './PostSignUp.style.scss';
 const Step1: FunctionComponent = props => {
   return (
     <div>
-      <Progress step={0} />
+      <Progress step={1} />
       <h2 className="page-title">Getting started</h2>
       <p className="mb-md">
         We just need you to fill out some details on you and what help you can provide in times of

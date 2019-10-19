@@ -41,7 +41,7 @@ const Step5: FunctionComponent = props => {
         <Link to={PATHS.POST_SIGNUP + '/4'}>
           <Button>←&nbsp;&nbsp;Previous</Button>
         </Link>
-        <Link to={PATHS.POST_SIGNUP + '/6'}>
+        <Link to={PATHS.POST_SIGNUP + '/finish'}>
           <Button>Next&nbsp;&nbsp;→</Button>
         </Link>
       </div>
