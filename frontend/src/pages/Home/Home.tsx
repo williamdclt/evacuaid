@@ -33,7 +33,7 @@ const Home: React.FunctionComponent = () => (
       <div className="col-6">
         <div className="home__risk">
           <div className="home__risk__chart">
-            <div className="home__risk__score">12.3%</div>
+            <div className="home__risk__score">13.6%</div>
             <Doughnut data={data} options={{ cutoutPercentage: 90 }} />
           </div>
           <div className="home__risk__caption">Current wildfire risk in your area</div>
