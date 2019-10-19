@@ -1,12 +1,5 @@
 import styled, { css } from 'styled-components';
-import {
-  borderRadius,
-  colorUsage,
-  fontFamily,
-  fontWeight,
-  getSpacing,
-  lineHeight,
-} from 'stylesheet';
+import { borderRadius, colorUsage, fontFamily, fontWeight, lineHeight } from 'stylesheet';
 
 interface ILink {
   href?: string;
