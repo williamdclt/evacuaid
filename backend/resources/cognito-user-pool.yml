@@ -6,7 +6,6 @@ Resources:
       UserPoolName: ${self:custom.cognitoUserPoolName}
       UsernameAttributes:
         - email
-        - phone_number
       AutoVerifiedAttributes:
         - email
       Policies:

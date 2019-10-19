@@ -10,7 +10,7 @@ class Callback extends React.PureComponent<Props> {
     const url = window.location.href;
     const locStart = url.search('id_token') + 9;
     const locEnd = url.search('&access_token');
-    const jwt = url.substr(locStart, locEnd);
+    const jwt = url.substr(locStart, locEnd - locStart);
     this.props.loginUser(jwt);
     this.props.push('/');
   };
