@@ -20,13 +20,11 @@ const Header: React.FunctionComponent<RouteComponentProps & IHeaderProps> = ({
       <img className="logo" alt="Forge logo" src={logo} />
     </RouterLink>
      
-    {isUserLoggedIn && (
+    {isUserLoggedIn ? (
       <Link onClick={logout}>
         <FormattedMessage id="header.logout" />
       </Link>
-    )}
-        
-    {!isUserLoggedIn && (
+    ) : (
       <Link
         href={`https://evacuaid.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=${
           process.env.REACT_APP_COGNITO_APP_CLIENT_ID

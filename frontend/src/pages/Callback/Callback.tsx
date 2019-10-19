@@ -14,7 +14,7 @@ class Callback extends React.PureComponent<Props> {
     this.props.loginUser(jwt);
     this.props.push('/');
   };
-  render = () => <div>Callback</div>;
+  render = () => <div />;
 }
 
 export default Callback;
