@@ -1,9 +1,24 @@
-service: evacuaid-backendPython-${opt:stackName}
+service: evacuaid-backendPython
 
 provider:
   name: aws
   runtime: python3.7
   region: eu-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:UpdateTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [Table, Arn]
+environment:
+  tableName: evacuaid-backend-dev-table
 
 functions:
   fire-data-cron:

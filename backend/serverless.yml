@@ -26,6 +26,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:DescribeTable
+        - dynamodb:UpdateTable
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem

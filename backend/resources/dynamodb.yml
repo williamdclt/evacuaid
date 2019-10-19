@@ -1,16 +1,37 @@
 Resources:
-    Table:
-        Type: AWS::DynamoDB::Table
-        Properties:
-            TableName: ${self:custom.dynamodbTableName}
-            AttributeDefinitions:
-                - AttributeName: username
-                  AttributeType: S
-                - AttributeName: uuid
-                  AttributeType: S
-            KeySchema:
-                - AttributeName: username
-                  KeyType: HASH
-                - AttributeName: uuid
-                  KeyType: RANGE
-            BillingMode: PAY_PER_REQUEST
+  Table:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.dynamodbTableName}
+      AttributeDefinitions:
+        - AttributeName: username
+          AttributeType: S
+        - AttributeName: uuid
+          AttributeType: S
+        - AttributeName: latitude
+          AttributeType: S
+        - AttributeName: longitude
+          AttributeType: S
+      KeySchema:
+        - AttributeName: uuid
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: usernameIndex
+          KeySchema:
+            - AttributeName: username
+              KeyType: HASH
+          Projection:
+            ProjectionType: 'ALL'
+        - IndexName: latitudeIndex
+          KeySchema:
+            - AttributeName: latitude
+              KeyType: HASH
+          Projection:
+            ProjectionType: 'ALL'
+        - IndexName: longitudeIndex
+          KeySchema:
+            - AttributeName: longitude
+              KeyType: HASH
+          Projection:
+            ProjectionType: 'ALL'
+      BillingMode: PAY_PER_REQUEST
