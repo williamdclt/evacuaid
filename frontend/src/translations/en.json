@@ -21,7 +21,7 @@
   },
   "login": {
     "title": "Launch your Theodo project in seconds",
-    "login-button": "Connexion",
+    "login-button": "Login",
     "email": "Email",
     "email-placeholder": "ex: comes@theodo.fr",
     "password": "Password",

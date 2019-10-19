@@ -8,7 +8,7 @@ import enMessages from 'translations/en.json';
 import frMessages from 'translations/fr.json';
 
 import './Root.style.scss';
-import Header from 'components/Header/Header';
+import Header from 'components/Header';
 
 const locales = {
   fr: flattenMessages(frMessages),
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const Root: React.FunctionComponent<Props> = ({ children }) => (
-  <IntlProvider locale="fr" messages={locales.fr}>
+  <IntlProvider locale="en" messages={locales.en}>
     <div className="root">
       <Header />
       <div className="page-content">{children}</div>
