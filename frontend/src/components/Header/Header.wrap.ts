@@ -15,7 +15,6 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   logout: () => {
     dispatch(logoutUser);
-    dispatch(push(PATHS.LOGIN));
   },
 });
 
