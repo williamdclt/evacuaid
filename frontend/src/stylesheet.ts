@@ -49,7 +49,7 @@ export const colorUsage = {
 };
 
 export const fontFamily = {
-  main: `'Lato', 'Helvetica', 'Arial', sans-serif`,
+  main: `'Noto Sans', 'Helvetica', 'Arial', sans-serif`,
   code: 'Monospace',
 };
 

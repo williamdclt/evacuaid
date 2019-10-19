@@ -3,12 +3,12 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 
-import Header from 'components/Header';
 import { flattenMessages } from 'services/i18n/intl';
 import enMessages from 'translations/en.json';
 import frMessages from 'translations/fr.json';
 
-import { PageContent, RootContainer } from './Root.style';
+import './Root.style.scss';
+import Header from 'components/Header/Header';
 
 const locales = {
   fr: flattenMessages(frMessages),
@@ -23,10 +23,10 @@ interface Props {
 
 const Root: React.FunctionComponent<Props> = ({ children }) => (
   <IntlProvider locale="fr" messages={locales.fr}>
-    <RootContainer>
+    <div className="root">
       <Header />
-      <PageContent>{children}</PageContent>
-    </RootContainer>
+      <div className="page-content">{children}</div>
+    </div>
   </IntlProvider>
 );
 

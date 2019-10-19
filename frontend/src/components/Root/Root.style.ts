@@ -11,8 +11,7 @@ RootContainer.displayName = 'RootContainer';
 
 export const PageContent = styled.main`
   background-color: ${colorUsage.contentBackground};
-  border-radius: ${borderRadius.large};
-  padding: ${getSpacing(6)};
+  padding: 4rem;
   flex-grow: 1;
 `;
 PageContent.displayName = 'PageContent';

@@ -1,0 +1,16 @@
+@import '../../assets/variables.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  background-color: rgba($secondary-green, 0.1);
+}
+
+.page-content {
+  margin: auto;
+  padding: 4rem 0;
+  flex-grow: 1;
+  max-width: 1000px;
+}

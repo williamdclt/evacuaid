@@ -1,0 +1,29 @@
+@import '../../assets/variables.scss';
+
+.home {
+  &__welcome {
+    margin-bottom: 4rem;
+    margin-top: 0rem;
+    color: $primary-pink;
+  }
+
+  &__portal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -2rem;
+
+    &__item {
+      width: 15rem;
+      height: 3rem;
+      border: 1px #ddd solid;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      margin-left: 2rem;
+
+      &--placeholder {
+        border: none;
+      }
+    }
+  }
+}
