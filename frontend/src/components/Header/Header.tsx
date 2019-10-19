@@ -4,7 +4,6 @@ import logo from 'assets/logo.png';
 import { FormattedMessage } from 'react-intl';
 import { PATHS } from 'routes';
 import Link from 'components/Link';
-import { Logo, HeaderContainer } from './Header.style';
 import './Header.style.scss';
 
 interface IHeaderProps {
