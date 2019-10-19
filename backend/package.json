@@ -20,6 +20,7 @@
     "aws-sdk": "2.519.0",
     "node-fetch": "^2.6.0",
     "source-map-support": "0.5.10",
+    "twilio": "^3.36.0",
     "uuid": "3.3.2"
   },
   "devDependencies": {

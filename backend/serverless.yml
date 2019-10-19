@@ -37,6 +37,10 @@ provider:
         - 'Fn::GetAtt': [Table, Arn]
   environment:
     tableName: ${self:custom.dynamodbTableName}
+    TwilioAuthToken: ${ssm:evacuaid-twilio-authToken~true}
+    TwilioScriptUrl: ${ssm:twilio-voice-script}
+    TwilioOutNumber: ${ssm:evacuAid-twilio-out}
+    TwilioTestNumber: ${ssm:evacuaid-test-number}
 
 functions:
   hello:
