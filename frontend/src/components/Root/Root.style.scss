@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100%;
   width: 100vw;
+  overflow-y: auto;
   background-color: rgba($secondary-green, 0.1);
 }
 
@@ -46,4 +47,12 @@ em {
 
 .pull-right {
   float: right;
+}
+
+.mb-md {
+  margin-bottom: 2rem !important;
+}
+
+.mb-lg {
+  margin-bottom: 4rem !important;
 }
