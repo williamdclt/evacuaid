@@ -1,0 +1,13 @@
+service: evacuaid-backendPython-${opt:stackName}
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: eu-west-2
+
+functions:
+  fire-data-cron:
+    description: Cron which gets the fire data
+    handler: fireCron.eventCreater
+    events:
+      - schedule: rate(1 minute)
