@@ -12,5 +12,34 @@
   margin: auto;
   padding: 4rem 0;
   flex-grow: 1;
-  max-width: 1000px;
+  width: 1000px;
+}
+
+.bp3-progress-bar {
+  &.bp3-intent-success {
+    background-color: rgba($secondary-green, 0.3);
+    .bp3-progress-meter {
+      background-color: $secondary-green !important;
+    }
+  }
+}
+
+.progress {
+  &__label {
+    margin-bottom: 1rem;
+  }
+}
+
+em {
+  color: $primary-pink;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  margin-top: 0rem;
+  color: $primary-pink;
+  font-weight: 400;
 }

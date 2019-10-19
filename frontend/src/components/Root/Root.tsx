@@ -7,8 +7,12 @@ import { flattenMessages } from 'services/i18n/intl';
 import enMessages from 'translations/en.json';
 import frMessages from 'translations/fr.json';
 
-import './Root.style.scss';
 import Header from 'components/Header/Header';
+
+import './Root.style.scss';
+import 'normalize.css/normalize.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
 
 const locales = {
   fr: flattenMessages(frMessages),
