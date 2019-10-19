@@ -6,22 +6,17 @@ import { TEXT_MUTED } from '@blueprintjs/core/lib/esm/common/classes';
 import { Link } from 'react-router-dom';
 import { PATHS } from 'routes';
 import './PostSignUp.style.scss';
+import CheckboxGroup from './CheckboxGroup';
+import GraphicCheckbox from './GraphicCheckbox';
 
-enum ACCOMMODATION_AVAILABILITY {
-  NONE = 0,
-  ONE_OR_TWO = 1,
-  THREE_OR_FOUR = 3,
-  FIVE_OR_MORE = 5,
+enum RESOURCES {
+  FIRST_AID = 'FIRST_AID',
+  FOOD_WATER = 'FOOD_WATER',
+  TRANSPORT = 'TRANSPORT',
 }
 
-const Step3: FunctionComponent = props => {
-  const [accommodationAvailability, setAvailability] = useState<ACCOMMODATION_AVAILABILITY>();
-
-  const onAvailabilityChange = useCallback(
-    (event: React.FormEvent<HTMLInputElement>) =>
-      setAvailability(parseInt(event.currentTarget.value)),
-    [setAvailability],
-  );
+const Step4: FunctionComponent = props => {
+  const [offeredResources, setOfferedResources] = useState<string[]>([]);
 
   return (
     <div>
@@ -33,28 +28,11 @@ const Step3: FunctionComponent = props => {
       </p>
       <p className={'mb-md ' + TEXT_MUTED}>Select as many as applicable.</p>
       <form>
-        <RadioGroup
-          onChange={onAvailabilityChange}
-          selectedValue={accommodationAvailability}
-          className="bp3-radio-group"
-        >
-          <Radio
-            label="I am unable to offer any rooms to future evacues"
-            value={ACCOMMODATION_AVAILABILITY.NONE}
-          />
-          <Radio
-            label="I have enough space for 1 - 2 people"
-            value={ACCOMMODATION_AVAILABILITY.ONE_OR_TWO}
-          />
-          <Radio
-            label="I have enough space for 3 - 5 people"
-            value={ACCOMMODATION_AVAILABILITY.THREE_OR_FOUR}
-          />
-          <Radio
-            label="I have enough space for 5+ people"
-            value={ACCOMMODATION_AVAILABILITY.FIVE_OR_MORE}
-          />
-        </RadioGroup>
+        <CheckboxGroup value={offeredResources} onChange={setOfferedResources}>
+          <GraphicCheckbox label="Basic First Aid" value={RESOURCES.FIRST_AID} />
+          <GraphicCheckbox label="Food and Water" value={RESOURCES.FOOD_WATER} />
+          <GraphicCheckbox label="Transport" value={RESOURCES.TRANSPORT} />
+        </CheckboxGroup>
       </form>
       <div className="nav-buttons">
         <Link to={PATHS.POST_SIGNUP + '/3/bis'}>
@@ -68,4 +46,4 @@ const Step3: FunctionComponent = props => {
   );
 };
 
-export default Step3;
+export default Step4;

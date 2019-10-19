@@ -9,6 +9,7 @@ const PostSignUp1 = lazy(() => import('./pages/PostSignUp/Step1'));
 const PostSignUp2 = lazy(() => import('./pages/PostSignUp/Step2'));
 const PostSignUp3 = lazy(() => import('./pages/PostSignUp/Step3'));
 const PostSignUp3bis = lazy(() => import('./pages/PostSignUp/Step3bis'));
+const PostSignUp4 = lazy(() => import('./pages/PostSignUp/Step4'));
 
 export const PATHS = {
   HOME: '/',
@@ -27,6 +28,7 @@ const routes = () => (
       <Route exact path={PATHS.POST_SIGNUP + '/2'} component={PostSignUp2} />
       <Route exact path={PATHS.POST_SIGNUP + '/3'} component={PostSignUp3} />
       <Route exact path={PATHS.POST_SIGNUP + '/3/bis'} component={PostSignUp3bis} />
+      <Route exact path={PATHS.POST_SIGNUP + '/4'} component={PostSignUp4} />
     </Switch>
   </Suspense>
 );
