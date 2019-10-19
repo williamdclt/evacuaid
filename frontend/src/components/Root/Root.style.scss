@@ -1,0 +1,58 @@
+@import '../../assets/variables.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  overflow-y: auto;
+  background-color: rgba($secondary-green, 0.1);
+}
+
+.page-content {
+  margin: auto;
+  padding: 4rem 0;
+  flex-grow: 1;
+  width: 1000px;
+}
+
+.bp3-progress-bar {
+  &.bp3-intent-success {
+    background-color: rgba($secondary-green, 0.3);
+    .bp3-progress-meter {
+      background-color: $secondary-green !important;
+    }
+  }
+}
+
+.progress {
+  &__label {
+    margin-bottom: 1rem;
+  }
+}
+
+em {
+  color: $primary-pink;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  margin-top: 0rem;
+  color: $primary-pink;
+  font-weight: 400;
+}
+
+.pull-right {
+  float: right;
+}
+
+.mb-md {
+  margin-bottom: 2rem !important;
+}
+
+.mb-lg {
+  margin-bottom: 4rem !important;
+}

@@ -1,5 +1,5 @@
 service:
-  name: evacuaid-backend-robc
+  name: evacuaid-backend
 
 package:
   exclude:
@@ -108,7 +108,7 @@ custom:
   dynamodbTableName: ${self:service.name}-${self:provider.stage}-table
   cognitoUserPoolName: ${self:service.name}-${self:provider.stage}-user-pool
   cognitoUserPoolClientName: ${self:service.name}-${self:provider.stage}-user-pool-client
-  cognitoIdentityPoolName: ${self:provider.stage}IdentityPool
+  cognitoIdentityPoolName: ${self:service.name}-${self:provider.stage}IdentityPool
   # we must change this last name to be more specific but we have a problem:
   # indentity pool name can only contain numbers, letters, underscores and spaces
 

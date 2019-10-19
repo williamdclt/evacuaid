@@ -3,12 +3,18 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 
-import Header from 'components/Header';
 import { flattenMessages } from 'services/i18n/intl';
 import enMessages from 'translations/en.json';
 import frMessages from 'translations/fr.json';
 
-import { PageContent, RootContainer } from './Root.style';
+import Header from 'components/Header';
+import './Root.style.scss';
+
+import './Root.style.scss';
+import './Form.style.scss';
+import 'normalize.css/normalize.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
 
 const locales = {
   fr: flattenMessages(frMessages),
@@ -22,11 +28,11 @@ interface Props {
 }
 
 const Root: React.FunctionComponent<Props> = ({ children }) => (
-  <IntlProvider locale="fr" messages={locales.fr}>
-    <RootContainer>
+  <IntlProvider locale="en" messages={locales.en}>
+    <div className="root">
       <Header />
-      <PageContent>{children}</PageContent>
-    </RootContainer>
+      <div className="page-content">{children}</div>
+    </div>
   </IntlProvider>
 );
 

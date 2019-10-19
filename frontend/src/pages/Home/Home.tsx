@@ -1,38 +1,22 @@
 import * as React from 'react';
-import {
-  HomeContainer,
-  Logo,
-  Title,
-  HowTo,
-  Code,
-  DescriptionLine,
-  DescriptionList,
-} from './Home.style';
-import logo from 'assets/forge_logo.png';
+import './Home.style.scss';
 
 const Home: React.FunctionComponent = () => (
-  <HomeContainer>
-    <Logo alt="forgelogo" src={logo} />
-    <Title>Welcome to Forge, you’ve just launched your project</Title>
-    <HowTo>
-      <DescriptionList>
-        <DescriptionLine>
-          To create a page or a component, run <Code>yarn generate</Code>.
-        </DescriptionLine>
-        <DescriptionLine>
-          The style is centralized in the <Code>src/stylesheet.ts</Code>. From there, you can manage
-          colors, font properties, spacing unit...
-        </DescriptionLine>
-        <DescriptionLine>
-          Redesign the <Code>src/components/AppCrashFallback</Code> that will display when there is
-          a javascript error.
-        </DescriptionLine>
-        <DescriptionLine>
-          Read more about the tools and built-in features in the <Code>README.md</Code>.
-        </DescriptionLine>
-      </DescriptionList>
-    </HowTo>
-  </HomeContainer>
+  <div>
+    <h2 className="home__welcome">Hi John Doe</h2>
+    <div className="home__portal">
+      <div className="home__portal__item">
+        Current status:
+        <br />
+        Inactive
+      </div>
+      <div className="home__portal__item">View collectives near me</div>
+      <div className="home__portal__item">Preventing the spread of wildfire</div>
+      <div className="home__portal__item">View or update my personal address</div>
+      <div className="home__portal__item">View or update other details</div>
+      <div className="home__portal__item home__portal__item--placeholder" />
+    </div>
+  </div>
 );
 
 export default Home;
