@@ -103,6 +103,13 @@ functions:
             type: COGNITO_USER_POOLS
             authorizerId:
               Ref: ApiGatewayAuthorizer
+  getRating:
+    handler: getRating.main
+    events:
+      - http:
+          method: get
+          path: getRating
+          cors: true
 
 custom:
   dynamodbTableName: ${self:service.name}-${self:provider.stage}-table
