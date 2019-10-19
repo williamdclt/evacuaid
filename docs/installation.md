@@ -74,14 +74,17 @@ Go through this once when you install the project, you shouldn't need to do that
 
   Go to your user pool in cognito in the AWS console
 
-  - Go to AWS Client Settings
+  - Go to App Client Settings
     - Check `Cognito User Pool` for `Enabled Identity Providers`
     - Add `http://localhost:3000/callback, https://evacuaid.me/callback` for callback urls
     - Add `http://localhost:3000, https://evacuaid.me` for Sign out URL(s)
     - Tick `Implicit grant` for `Allowed OAuth Flows`
     - Tick all boxes for `Allowed OAuth Scopes`
+  - Go to Domain Name
+    - Enter a domain and save
+    - Change the value of REACT_APP_COGNITO_USER_POOL_DOMAIN in your frontend env variables to this value
 
-- **Create your Cognito User**
+* **Create your Cognito User**
 
   Register a user:
 
