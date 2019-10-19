@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState, useCallback } from 'react';
 import Progress from './Progress';
 import Button from 'components/Button';
-import { FormGroup, Label, InputGroup, RadioGroup, Radio } from '@blueprintjs/core';
+import { RadioGroup, Radio } from '@blueprintjs/core';
 import { TEXT_MUTED } from '@blueprintjs/core/lib/esm/common/classes';
-import Link from 'components/Link';
+import { Link } from 'react-router-dom';
 import { PATHS } from 'routes';
 import './PostSignUp.style.scss';
 
@@ -14,7 +14,7 @@ enum ACCOMMODATION_AVAILABILITY {
   FIVE_OR_MORE = 5,
 }
 
-const Step1: FunctionComponent = props => {
+const Step3: FunctionComponent = props => {
   const [accommodationAvailability, setAvailability] = useState<ACCOMMODATION_AVAILABILITY>();
 
   const onAvailabilityChange = useCallback(
@@ -23,9 +23,11 @@ const Step1: FunctionComponent = props => {
     [setAvailability],
   );
 
+  const nextPage = accommodationAvailability !== ACCOMMODATION_AVAILABILITY.NONE ? '/3/bis' : '/5';
+
   return (
     <div>
-      <Progress step={2} />
+      <Progress step={3} />
       <h2 className="page-title">Offering accomodation</h2>
       <p className="mb-md">
         If you are willing and able to provide some rooms for future evacuees, how many people could
@@ -60,10 +62,10 @@ const Step1: FunctionComponent = props => {
         </RadioGroup>
       </form>
       <div className="nav-buttons">
-        <Link href={PATHS.POST_SIGNUP + '/2'}>
+        <Link to={PATHS.POST_SIGNUP + '/2'}>
           <Button>←&nbsp;&nbsp;Previous</Button>
         </Link>
-        <Link href={PATHS.POST_SIGNUP + '/4'}>
+        <Link to={PATHS.POST_SIGNUP + nextPage}>
           <Button>Next&nbsp;&nbsp;→</Button>
         </Link>
       </div>
@@ -71,4 +73,4 @@ const Step1: FunctionComponent = props => {
   );
 };
 
-export default Step1;
+export default Step3;

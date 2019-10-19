@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 import Progress from './Progress';
 import { PATHS } from 'routes';
 import Button from 'components/Button';
-import Link from 'components/Link';
 import './PostSignUp.style.scss';
 
 const Step1: FunctionComponent = props => {
@@ -16,7 +16,7 @@ const Step1: FunctionComponent = props => {
       </p>
       <div className="nav-buttons">
         <div />
-        <Link href={PATHS.POST_SIGNUP + '/2'} className="pull-right">
+        <Link to={PATHS.POST_SIGNUP + '/2'} className="pull-right">
           <Button>Let's go&nbsp;&nbsp;→</Button>
         </Link>
       </div>

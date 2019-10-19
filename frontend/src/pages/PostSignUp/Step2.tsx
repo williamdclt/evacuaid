@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react';
 import Progress from './Progress';
 import Button from 'components/Button';
 import { FormGroup, Label, InputGroup } from '@blueprintjs/core';
-import Link from 'components/Link';
+import { Link } from 'react-router-dom';
 import { PATHS } from 'routes';
 import './PostSignUp.style.scss';
 
-const Step1: FunctionComponent = props => {
+const Step2: FunctionComponent = props => {
   return (
     <div>
       <Progress step={1} />
@@ -31,10 +31,10 @@ const Step1: FunctionComponent = props => {
         </FormGroup>
       </form>
       <div className="nav-buttons">
-        <Link href={PATHS.POST_SIGNUP + '/1'}>
+        <Link to={PATHS.POST_SIGNUP + '/1'}>
           <Button>←&nbsp;&nbsp;Previous</Button>
         </Link>
-        <Link href={PATHS.POST_SIGNUP + '/3'}>
+        <Link to={PATHS.POST_SIGNUP + '/3'}>
           <Button>Next&nbsp;&nbsp;→</Button>
         </Link>
       </div>
@@ -42,4 +42,4 @@ const Step1: FunctionComponent = props => {
   );
 };
 
-export default Step1;
+export default Step2;
