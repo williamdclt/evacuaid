@@ -39,6 +39,18 @@ const Dashboard: React.FunctionComponent = () => {
     ],
   };
 
+  const evacuaidDonate = () => {
+    console.log("test")
+    // @ts-ignore
+      var stripe = Stripe('pk_test_AEvwREWMkPYMecGclbzXDc3v00WeSmfw68');
+        stripe.redirectToCheckout({
+          items: [{sku: 'sku_G1iTf1DWmzGsRS', quantity: 1}],
+          successUrl: 'https://evacuaid.me/dashboard',
+          cancelUrl: 'https://evacuaid.me/dashboard',
+        })
+        .then(() => null);
+  }
+
   return (
     <div className="container-fluid">
       <div className="row mb-lg">
@@ -81,6 +93,7 @@ const Dashboard: React.FunctionComponent = () => {
         <RouterLink className="home__portal__item" to={PATHS.BOT}>
           EvacuBot 🤖
         </RouterLink>
+        <div className="home__portal__item" onClick={() => evacuaidDonate()}>Donate to your collective</div>
       </div>
     </div>
   );
