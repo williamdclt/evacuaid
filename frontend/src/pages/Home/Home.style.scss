@@ -1,0 +1,16 @@
+@import '../../assets/variables.scss';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .page-title {
+    text-align: center;
+  }
+
+  img {
+    width: 50%;
+    text-align: center;
+  }
+}
