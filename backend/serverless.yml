@@ -106,6 +106,8 @@ functions:
               Ref: ApiGatewayAuthorizer
   getRating:
     handler: getRating.main
+    environment:
+      GEOCODING_API_KEY: ${ssm:evacuaid-geocodingKey~true}
     events:
       - http:
           method: get
