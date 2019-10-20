@@ -16,7 +16,7 @@ const Header: React.FunctionComponent<RouteComponentProps & IHeaderProps> = ({
   logout,
 }) => (
   <div className="header">
-    <RouterLink to={PATHS.HOME}>
+    <RouterLink to={PATHS.DASHBOARD}>
       <img className="logo" alt="Forge logo" src={logo} />
     </RouterLink>
      

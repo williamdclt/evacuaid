@@ -1,64 +1,16 @@
 @import '../../assets/variables.scss';
 
 .home {
-  &__welcome {
-    margin-bottom: 4rem;
-    margin-top: 0rem;
-    color: $primary-pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .page-title {
+    text-align: center;
   }
 
-  &__portal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: -2rem;
-
-    &__item {
-      width: 48%;
-      height: 8rem;
-      margin-bottom: 2rem;
-      background-color: #717d7e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $light;
-      border-radius: 10px;
-      font-size: 20px;
-      font-weight: 500;
-      cursor: pointer;
-
-      &:hover {
-        background-color: lighten(#717d7e, 5%);
-        text-decoration: underline;
-      }
-
-      &:active {
-        background-color: darken(#717d7e, 5%);
-        text-decoration: underline;
-      }
-    }
-  }
-
-  &__risk {
-    &__caption {
-      margin-top: 1rem;
-      font-weight: 300;
-      color: $primary-green;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &__score {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 2.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
+  img {
+    width: 50%;
+    text-align: center;
   }
 }
