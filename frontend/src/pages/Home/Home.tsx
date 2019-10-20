@@ -9,7 +9,7 @@ const Home: React.FunctionComponent = props => {
   return (
     <div className="home">
       <img className="logo" alt="logo" src={logo} />
-      <h2 className="page-title">Welcome on EvacuAID</h2>
+      <h2 className="page-title">Welcome to EvacuAID</h2>
       <Link
         href={`https://${
           process.env.REACT_APP_COGNITO_USER_POOL_DOMAIN
