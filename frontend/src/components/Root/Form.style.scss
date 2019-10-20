@@ -5,11 +5,26 @@ form {
   .bp3-radio-group {
     margin-bottom: 2rem;
   }
-  .bp3-input {
+  .bp3-input,
+  input {
     padding: 2rem 2rem;
     background-color: rgba($secondary-green, 0.1);
     border-radius: 50px !important;
     font-size: 18px !important;
+    position: relative;
+    width: 100%;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 0 rgba(19, 124, 189, 0), 0 0 0 0 rgba(19, 124, 189, 0),
+      inset 0 0 0 1px rgba(16, 22, 26, 0.15), inset 0 1px 1px rgba(16, 22, 26, 0.2);
+    height: 30px;
+    transition: box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+
+    &:focus {
+      box-shadow: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3),
+        inset 0 1px 1px rgba(16, 22, 26, 0.2);
+      outline: none;
+    }
   }
 
   .bp3-control {
