@@ -17,7 +17,7 @@ const FinishSignUp: FunctionComponent = props => {
         you.
       </p>
       <div className="nav-buttons">
-        <Link to={PATHS.HOME}>
+        <Link to={PATHS.DASHBOARD}>
           <Button>Go to my dashboard</Button>
         </Link>
       </div>

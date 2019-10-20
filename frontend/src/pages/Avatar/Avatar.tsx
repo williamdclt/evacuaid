@@ -39,7 +39,7 @@ class Avatar extends React.PureComponent<Props> {
     return (
       <Container>
         <Content>
-          <Button tabIndex={0} onClick={this.navigateTo(PATHS.HOME)}>
+          <Button tabIndex={0} onClick={this.navigateTo(PATHS.DASHBOARD)}>
             <FormattedMessage id="page.back" />
           </Button>
           <Message>

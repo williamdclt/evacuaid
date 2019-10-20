@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Home from './Home';
+import Dashboard from './Dashboard';
 
 function mapStateToProps() {
   return {};
@@ -12,4 +12,4 @@ function mapDispatchToProps() {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Home);
+)(Dashboard);

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 import Loader from './components/Loader/Loader';
 
-const Home = lazy(() => import('./pages/Home'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Avatar = lazy(() => import('./pages/Avatar'));
 const Callback = lazy(() => import('./pages/Callback'));
 const PostSignUp1 = lazy(() => import('./pages/PostSignUp/Step1'));
@@ -15,6 +15,7 @@ const FinishSignUp = lazy(() => import('./pages/PostSignUp/FinishSignUp'));
 
 export const PATHS = {
   HOME: '/',
+  DASHBOARD: '/dashboard',
   AVATAR: '/avatar',
   CALLBACK: '/callback',
   POST_SIGNUP: '/user-info',
@@ -23,7 +24,8 @@ export const PATHS = {
 const routes = () => (
   <Suspense fallback={<Loader />}>
     <Switch>
-      <Route exact path={PATHS.HOME} component={Home} />
+      <Route exact path={PATHS.DASHBOARD} component={Dashboard} />
+      <Route exact path={PATHS.DASHBOARD} component={Dashboard} />
       <Route exact path={PATHS.AVATAR} component={Avatar} />
       <Route exact path={PATHS.CALLBACK} component={Callback} />
       <Route exact path={PATHS.POST_SIGNUP + '/1'} component={PostSignUp1} />

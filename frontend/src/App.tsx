@@ -30,7 +30,7 @@ const App: React.FunctionComponent<Props> = ({ history, persistor, store }) => (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ConnectedRouter history={history}>
-          <Route path={PATHS.HOME} component={RootComponentWithRoutes} />
+          <Route path={PATHS.DASHBOARD} component={RootComponentWithRoutes} />
         </ConnectedRouter>
       </PersistGate>
     </Provider>
