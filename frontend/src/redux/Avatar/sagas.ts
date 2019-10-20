@@ -1,12 +1,10 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import { ActionType, getType } from 'typesafe-actions';
 
-import client from 'services/networking/client';
 import { fetchUser } from './actions';
 
 // worker Saga: will be fired on USER_FETCH_REQUEST actions
 export function* fetchUserSaga(action: ActionType<typeof fetchUser.request>) {
-  const endpoint = `/users/${action.payload.username}`;
   try {
     // const response = yield call([client, client.get], endpoint);
     // yield put(fetchUser.success({ user: response.body }));

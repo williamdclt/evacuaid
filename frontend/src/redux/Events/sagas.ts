@@ -1,4 +1,4 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import client from 'services/networking/client';
 import { fetchEvents } from './actions';
 import { push } from 'connected-react-router';
@@ -9,7 +9,6 @@ export function* logoutUserSaga() {
 }
 
 export function* fetchEventsSaga() {
-  const endpoint = `/getFires`;
   // @ts-ignore
   const response = yield call(
     [client, client.get],
