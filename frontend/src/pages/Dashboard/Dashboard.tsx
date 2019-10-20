@@ -11,7 +11,7 @@ import { RootState } from 'redux/types';
 const Dashboard: React.FunctionComponent = () => {
   const [rating, setRating] = React.useState<number>();
   const userData: any = useSelector((state: RootState) =>
-    state.form.user ? state.form.user.values : null,
+    state.form && state.form.user ? state.form.user.values : null,
   );
   const address = userData
     ? `${userData.addressLine1 || ''} ${userData.addressLine2 || ''} ${userData.countyOrState ||
