@@ -41,3 +41,10 @@ functions:
     events:
       - schedule: rate(1 minute)
     timeout: 900
+  get-data:
+    handler: fireCron.getFires
+    events:
+      - http:
+          method: GET
+          path: getFires
+          cors: true

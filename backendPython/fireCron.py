@@ -1,6 +1,7 @@
 import csv
 import json
 import uuid
+from datetime import datetime
 from io import StringIO
 from urllib.request import Request, urlopen
 
@@ -11,7 +12,7 @@ from boto3.dynamodb.conditions import Key
 def eventCreater(event, context):
     try:
         request = Request(
-            "https://nrt4.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/viirs/USA_contiguous_and_Hawaii/VIIRS_I_USA_contiguous_and_Hawaii_VNP14IMGTDL_NRT_2019233.txt"
+            "https://nrt4.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/viirs/USA_contiguous_and_Hawaii/VIIRS_I_USA_contiguous_and_Hawaii_VNP14IMGTDL_NRT_2019293.txt"
         )
         request.add_header(
             "Authorization", "Bearer E2243090-F269-11E9-99F5-4EF3207B60E0"
@@ -63,3 +64,23 @@ def create_dynamo_item(fire):
                 "longitude": {"S": fire.get("longitude")},
             },
         )
+
+
+def getFires(event, context):
+    dynamodb = resource("dynamodb", region_name="eu-west-2")
+    table = dynamodb.Table("evacuaid-backend-dev-table")
+    fires = table.query(
+        IndexName="objectTypeIndex",
+        KeyConditionExpression=Key("objectType").eq("new_fires"),
+    )
+    response = []
+    for fire in fires["Items"]:
+        response.append(json.loads(fire.get("json")))
+    return {
+        "statusCode": 200,
+        "body": json.dumps(response),
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+    }
