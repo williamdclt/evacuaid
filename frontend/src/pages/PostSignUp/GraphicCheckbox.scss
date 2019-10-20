@@ -20,6 +20,7 @@
 .graphic-checkbox--selected {
   border-width: 4px;
   padding: calc(2rem - 2px);
+  background-color: rgba($secondary-green, 0.3);
 }
 
 .checkbox-group {
