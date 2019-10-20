@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { FormGroup, Label, InputGroup } from '@blueprintjs/core';
+import { FormGroup, Label } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 import { Form, reduxForm, Field } from 'redux-form';
 import { PATHS } from 'routes';
@@ -29,6 +29,14 @@ const Step2: FunctionComponent = props => {
         <FormGroup>
           <Label>Postcode</Label>
           <Field component="input" name="postCode" />
+        </FormGroup>
+        <FormGroup>
+          <Label>Full name</Label>
+          <Field component="input" name="fullName" />
+        </FormGroup>
+        <FormGroup>
+          <Label>Phone number</Label>
+          <Field component="input" name="phoneNumber" />
         </FormGroup>
       </Form>
       <div className="nav-buttons">
