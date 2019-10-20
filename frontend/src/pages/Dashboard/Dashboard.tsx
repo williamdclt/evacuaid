@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { Icon } from '@blueprintjs/core';
 import { Doughnut } from 'react-chartjs-2';
 import { getRating } from '../../services/networking/rating';
+import { PATHS } from 'routes';
+import { Link as RouterLink } from 'react-router-dom';
 
 import './Dashboard.style.scss';
 import { ChartData } from 'chart.js';
@@ -67,6 +69,9 @@ const Dashboard: React.FunctionComponent = () => {
         <div className="home__portal__item">My offer for accommodation</div>
         <div className="home__portal__item">The resources I need</div>
         <div className="home__portal__item">The resources I can provide</div>
+        <RouterLink className="home__portal__item" to={PATHS.EVENTS}>
+          Live Events
+        </RouterLink>
       </div>
     </div>
   );

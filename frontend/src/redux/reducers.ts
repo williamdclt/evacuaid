@@ -9,6 +9,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import { reducer as avatar } from './Avatar';
 import { reducer as login } from './Login';
+import { reducer as events } from './Events';
 import { RootAction, RootState } from './types';
 
 /**
@@ -25,6 +26,7 @@ export default function createReducer(asyncReducers: {
     ...asyncReducers,
     login,
     avatar,
+    events,
     form: formReducer,
   });
 }

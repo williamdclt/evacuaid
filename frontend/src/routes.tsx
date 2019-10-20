@@ -7,6 +7,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Bot = lazy(() => import('./pages/Bot'));
 const Avatar = lazy(() => import('./pages/Avatar'));
 const Callback = lazy(() => import('./pages/Callback'));
+const Events = lazy(() => import('./pages/Events'));
 const PostSignUp1 = lazy(() => import('./pages/PostSignUp/Step1'));
 const PostSignUp2 = lazy(() => import('./pages/PostSignUp/Step2'));
 const PostSignUp3 = lazy(() => import('./pages/PostSignUp/Step3'));
@@ -22,6 +23,7 @@ export const PATHS = {
   AVATAR: '/avatar',
   CALLBACK: '/callback',
   POST_SIGNUP: '/user-info',
+  EVENTS: '/events',
 };
 
 const routes = () => (
@@ -32,6 +34,7 @@ const routes = () => (
       <Route exact path={PATHS.BOT} component={Bot} />
       <Route exact path={PATHS.AVATAR} component={Avatar} />
       <Route exact path={PATHS.CALLBACK} component={Callback} />
+      <Route exact path={PATHS.EVENTS} component={Events} />
       <Route exact path={PATHS.POST_SIGNUP + '/1'} component={PostSignUp1} />
       <Route exact path={PATHS.POST_SIGNUP + '/2'} component={PostSignUp2} />
       <Route exact path={PATHS.POST_SIGNUP + '/3'} component={PostSignUp3} />

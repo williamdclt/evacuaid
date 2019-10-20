@@ -2,6 +2,8 @@ import { call, put, takeEvery, select } from 'redux-saga/effects';
 import client from 'services/networking/client';
 import { logoutUser, getUserInfo } from './actions';
 import { getUserToken } from './selectors';
+import { PATHS } from 'routes';
+
 import { push } from 'connected-react-router';
 
 export function* logoutUserSaga() {
@@ -18,9 +20,9 @@ export function* getUserInfoSaga() {
     yield call([client, client.post], endpoint, token, {
       objectType: 'user',
     });
-    yield put(push('/user-info/1'));
+    yield put(push(PATHS.POST_SIGNUP + '/1'));
   } else {
-    yield put(push('/'));
+    yield put(push(PATHS.DASHBOARD));
   }
 }
 
