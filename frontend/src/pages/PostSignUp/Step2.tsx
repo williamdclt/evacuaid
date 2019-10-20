@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import Progress from './Progress';
-import Button from 'components/Button';
 import { FormGroup, Label, InputGroup } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
+import { Form, reduxForm, Field } from 'redux-form';
 import { PATHS } from 'routes';
+import Button from 'components/Button';
+import Progress from './Progress';
 import './PostSignUp.style.scss';
 
 const Step2: FunctionComponent = props => {
@@ -12,24 +13,24 @@ const Step2: FunctionComponent = props => {
       <Progress step={2} />
       <h2 className="page-title">Your address</h2>
       <p className="mb-md">First things first, what is your current address?</p>
-      <form>
+      <Form onSubmit={() => {}}>
         <FormGroup>
           <Label>Address line 1</Label>
-          <InputGroup />
+          <Field component="input" name="addressLine1" />
         </FormGroup>
         <FormGroup>
           <Label>Address line 2</Label>
-          <InputGroup />
+          <Field component="input" name="addressLine2" />
         </FormGroup>
         <FormGroup>
           <Label>County / state</Label>
-          <InputGroup />
+          <Field component="input" name="countyOrState" />
         </FormGroup>
         <FormGroup>
           <Label>Postcode</Label>
-          <InputGroup />
+          <Field component="input" name="postCode" />
         </FormGroup>
-      </form>
+      </Form>
       <div className="nav-buttons">
         <Link to={PATHS.POST_SIGNUP + '/1'}>
           <Button>←&nbsp;&nbsp;Previous</Button>
@@ -42,4 +43,4 @@ const Step2: FunctionComponent = props => {
   );
 };
 
-export default Step2;
+export default reduxForm({ form: 'user' })(Step2);

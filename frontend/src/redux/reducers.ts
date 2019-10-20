@@ -5,6 +5,7 @@
 
 import { LocationChangeAction, RouterState } from 'connected-react-router';
 import { combineReducers, Reducer } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import { reducer as avatar } from './Avatar';
 import { reducer as login } from './Login';
@@ -24,5 +25,6 @@ export default function createReducer(asyncReducers: {
     ...asyncReducers,
     login,
     avatar,
+    form: formReducer,
   });
 }
