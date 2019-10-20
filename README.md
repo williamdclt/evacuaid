@@ -1,6 +1,8 @@
 # evacuAid
 
-🚧 A project that does something.
+Platform to connect communities in case of crisis events
+
+https://evacuaid.me
 
 ## Getting started
 
@@ -11,22 +13,4 @@
 
 - [Installation](./docs/installation.md)
 - [Frontend docs](./frontend/README.md)
-
-## Team
-
-> 🚧 Update me!
-
-Project director:
-  - **P D** (pd@theodo.co.uk)
-
-Developers (see [contributors](../../graphs/contributors)):
-  - **Dev 1** (dev@theodo.co.uk)
-  - **Dev 2** (dev@theodo.co.uk)
-  - **Dev 3** (dev@theodo.co.uk)
-
-Scrum Master:
-  - **S M** (sm@theodo.co.uk)
-
-Product Owner:
-  - **P O** (po@client.com)
 
