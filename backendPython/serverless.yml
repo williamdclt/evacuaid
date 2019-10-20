@@ -15,8 +15,24 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:*
       Resource:
         - { "Fn::ImportValue": evacuaid-backend-dev-table }
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+      Resource:
+        - {
+            "Fn::Join":
+              [
+                "/",
+                [
+                  { "Fn::ImportValue": evacuaid-backend-dev-table },
+                  "index",
+                  "*",
+                ],
+              ],
+          }
 
 functions:
   fire-data-cron:
@@ -24,3 +40,4 @@ functions:
     handler: fireCron.eventCreater
     events:
       - schedule: rate(1 minute)
+    timeout: 900
