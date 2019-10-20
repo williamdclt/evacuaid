@@ -1,23 +1,38 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux'
 import { Icon } from '@blueprintjs/core';
 import { Doughnut } from 'react-chartjs-2';
+import { getRating } from '../../services/networking/rating';
+
 import './Home.style.scss';
 import { ChartData } from 'chart.js';
+import { RootState } from 'redux/types';
 
-const data: ChartData = {
-  datasets: [
-    {
-      data: [12, 100 - 12],
-      backgroundColor: ['#5eb7b7', '#edf8f6'],
-      hoverBackgroundColor: ['#96d1c7', '#edf8f6'],
-      borderColor: ['#edf8f6', '#edf8f6'],
-      borderWidth: [0, 0],
-    },
-  ],
-};
 
-const Home: React.FunctionComponent = () => (
-  <div className="container-fluid">
+const Home: React.FunctionComponent = () => {
+  const [rating, setRating] = React.useState<number>()
+  const userData: any = useSelector((state: RootState) => state.form.user.values);
+  const address = userData ? `${userData.addressLine1 || ''} ${userData.addressLine1 || ''} ${userData.countyOrState || ''} ${userData.postCode || ''}` : ''
+  React.useEffect(() => {
+    setTimeout(() => getRating(address).then(setRating), 1000)
+  }, []);
+
+
+
+  const data: ChartData = {
+    datasets: [
+      {
+        data: [rating||0, rating?100 - rating:100],
+        backgroundColor: ['#5eb7b7', '#edf8f6'],
+        hoverBackgroundColor: ['#96d1c7', '#edf8f6'],
+        borderColor: ['#edf8f6', '#edf8f6'],
+        borderWidth: [0, 0],
+      },
+    ],
+  };
+  
+  
+  return <div className="container-fluid">
     <div className="row mb-lg">
       <div className="col-6">
         <h2 className="page-title">My Dashboard</h2>
@@ -33,7 +48,7 @@ const Home: React.FunctionComponent = () => (
       <div className="col-6">
         <div className="home__risk">
           <div className="home__risk__chart">
-            <div className="home__risk__score">13.6%</div>
+            <div className="home__risk__score">{rating ? rating+'%' : 'Loading'}</div>
             <Doughnut data={data} options={{ cutoutPercentage: 90 }} />
           </div>
           <div className="home__risk__caption">Current wildfire risk in your area</div>
@@ -47,6 +62,6 @@ const Home: React.FunctionComponent = () => (
       <div className="home__portal__item">The resources I can provide</div>
     </div>
   </div>
-);
+};
 
 export default Home;

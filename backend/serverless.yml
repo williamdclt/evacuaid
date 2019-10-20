@@ -1,5 +1,5 @@
 service:
-  name: evacuaid-backend
+  name: evacuaid-backend-clementp
 
 package:
   exclude:
