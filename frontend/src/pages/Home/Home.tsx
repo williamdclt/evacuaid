@@ -4,9 +4,21 @@ import logo from 'assets/logo.png';
 import './Home.style.scss';
 import Button from 'components/Button';
 import Link from 'components/Link';
+import { PATHS } from 'routes';
 
-const Home: React.FunctionComponent = props => {
-  return (
+interface IHomeProps {
+  isUserLoggedIn: boolean;
+  push: (pathName: string) => void;
+}
+
+class Home extends React.PureComponent<IHomeProps> {
+  componentDidMount = () => {
+    if (this.props.isUserLoggedIn) {
+      this.props.push(PATHS.DASHBOARD);
+    }
+  };
+
+  render = () => (
     <div className="home">
       <img className="logo" alt="logo" src={logo} />
       <h2 className="page-title">Welcome to EvacuAID</h2>
@@ -21,6 +33,6 @@ const Home: React.FunctionComponent = props => {
       </Link>
     </div>
   );
-};
+}
 
 export default Home;
