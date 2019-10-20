@@ -17,7 +17,12 @@ export const main = async (event: any): Promise<any> => {
     .then((call: any) => success(call.sid))
     .then(() => {
       return client.messages
-        .create({ body: 'Crisis Alert: Fire in your area - go to Hursley Park Rd, Hursley, Winchester SO21 2JN', from: process.env.TwilioOutNumber, to: process.env.TwilioTestNumber })
+        .create({
+          body:
+            'Crisis Alert: Fire in your area - your assigned safe location is Theodo UK, London https://www.waze.com/ul?ll=51.51562380%2C-0.13167340&navigate=yes',
+          from: process.env.TwilioOutNumber,
+          to: process.env.TwilioTestNumber,
+        })
         .then((message: any) => console.log(message.sid));
     })
     .catch((e: any) => console.log(e));
