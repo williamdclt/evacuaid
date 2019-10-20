@@ -11,10 +11,10 @@ import { RootState } from 'redux/types';
 
 const Home: React.FunctionComponent = () => {
   const [rating, setRating] = React.useState<number>()
-  const userData: any = useSelector((state: RootState) => state.form.user.values);
-  const address = userData ? `${userData.addressLine1 || ''} ${userData.addressLine1 || ''} ${userData.countyOrState || ''} ${userData.postCode || ''}` : ''
+  const userData: any = useSelector((state: RootState) => state.form.user ? state.form.user.values : null);
+  const address = userData ? `${userData.addressLine1 || ''} ${userData.addressLine2 || ''} ${userData.countyOrState || ''} ${userData.postCode || ''}` : ''
   React.useEffect(() => {
-    setTimeout(() => getRating(address).then(setRating), 1000)
+    setTimeout(() => address ? getRating(address).then(setRating) : setRating(0), 1000)
   }, []);
 
 
@@ -48,7 +48,7 @@ const Home: React.FunctionComponent = () => {
       <div className="col-6">
         <div className="home__risk">
           <div className="home__risk__chart">
-            <div className="home__risk__score">{rating ? rating+'%' : 'Loading'}</div>
+            <div className="home__risk__score">{rating !== undefined ? rating+'%' : 'Loading'}</div>
             <Doughnut data={data} options={{ cutoutPercentage: 90 }} />
           </div>
           <div className="home__risk__caption">Current wildfire risk in your area</div>
