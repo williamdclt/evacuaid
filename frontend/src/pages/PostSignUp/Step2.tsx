@@ -51,4 +51,4 @@ const Step2: FunctionComponent = props => {
   );
 };
 
-export default reduxForm({ form: 'user' })(Step2);
+export default reduxForm({ form: 'user', destroyOnUnmount: false })(Step2);
