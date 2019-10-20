@@ -41,16 +41,10 @@ const Home: React.FunctionComponent = () => (
       </div>
     </div>
     <div className="home__portal">
-      <div className="home__portal__item">
-        Current status:
-        <br />
-        Inactive
-      </div>
       <div className="home__portal__item">View collectives near me</div>
-      <div className="home__portal__item">Preventing the spread of wildfire</div>
-      <div className="home__portal__item">View or update my personal address</div>
-      <div className="home__portal__item">View or update other details</div>
-      <div className="home__portal__item home__portal__item--placeholder" />
+      <div className="home__portal__item">My offer for accommodation</div>
+      <div className="home__portal__item">The resources I need</div>
+      <div className="home__portal__item">The resources I can provide</div>
     </div>
   </div>
 );

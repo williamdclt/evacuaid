@@ -14,15 +14,22 @@
     margin-left: -2rem;
 
     &__item {
-      width: 18rem;
+      width: 48%;
       height: 8rem;
-      border: 1px #bbb solid;
-      padding: 2rem;
       margin-bottom: 2rem;
-      margin-left: 1.5rem;
+      background-color: #717d7e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $light;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
 
-      &--placeholder {
-        border: none;
+      &:hover {
+        background-color: lighten(#717d7e, 5%);
+        text-decoration: underline;
       }
     }
   }
