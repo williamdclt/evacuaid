@@ -1,0 +1,21 @@
+{
+  "name": "evacuaid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getHighRiskZones.js",
+  "scripts": {
+    "locally": "node -e \"console.log(require('./getHighRiskZones').handler({}));\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0",
+    "papaparse": "^5.1.0",
+    "request": "^2.88.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
