@@ -13,9 +13,9 @@ const Home: React.FunctionComponent = props => {
       <Link
         href={`https://${
           process.env.REACT_APP_COGNITO_USER_POOL_DOMAIN
-        }.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=${
+          }.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=${
           process.env.REACT_APP_COGNITO_APP_CLIENT_ID
-        }&redirect_uri=${window.location.origin}/callback`}
+          }&redirect_uri=${window.location.origin}/callback`}
       >
         <Button>Sign up</Button>
       </Link>

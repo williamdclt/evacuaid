@@ -4,6 +4,8 @@ import Loader from './components/Loader/Loader';
 
 const Home = lazy(() => import('./pages/Home'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Bot = lazy(() => import('./pages/Bot'));
+const Avatar = lazy(() => import('./pages/Avatar'));
 const Callback = lazy(() => import('./pages/Callback'));
 const PostSignUp1 = lazy(() => import('./pages/PostSignUp/Step1'));
 const PostSignUp2 = lazy(() => import('./pages/PostSignUp/Step2'));
@@ -16,6 +18,8 @@ const FinishSignUp = lazy(() => import('./pages/PostSignUp/FinishSignUp'));
 export const PATHS = {
   HOME: '/',
   DASHBOARD: '/dashboard',
+  BOT: '/bot',
+  AVATAR: '/avatar',
   CALLBACK: '/callback',
   POST_SIGNUP: '/user-info',
 };
@@ -25,6 +29,8 @@ const routes = () => (
     <Switch>
       <Route exact path={PATHS.HOME} component={Home} />
       <Route exact path={PATHS.DASHBOARD} component={Dashboard} />
+      <Route exact path={PATHS.BOT} component={Bot} />
+      <Route exact path={PATHS.AVATAR} component={Avatar} />
       <Route exact path={PATHS.CALLBACK} component={Callback} />
       <Route exact path={PATHS.POST_SIGNUP + '/1'} component={PostSignUp1} />
       <Route exact path={PATHS.POST_SIGNUP + '/2'} component={PostSignUp2} />
