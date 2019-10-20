@@ -3,6 +3,7 @@ import * as React from 'react';
 interface Props {
   loginUser: (token: string) => void;
   push: (pathName: string) => void;
+  getUserInfo: () => void;
 }
 
 class Callback extends React.PureComponent<Props> {
@@ -12,7 +13,7 @@ class Callback extends React.PureComponent<Props> {
     const locEnd = url.search('&access_token');
     const jwt = url.substr(locStart, locEnd - locStart);
     this.props.loginUser(jwt);
-    this.props.push('/');
+    this.props.getUserInfo();
   };
   render = () => <div />;
 }

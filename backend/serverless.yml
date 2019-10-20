@@ -35,6 +35,7 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - 'Fn::GetAtt': [Table, Arn]
+        - Fn::Join: ['/', ['Fn::GetAtt': [Table, Arn], 'index/*']]
   environment:
     tableName: ${self:custom.dynamodbTableName}
     TwilioAuthToken: ${ssm:evacuaid-twilio-authToken~true}
@@ -60,7 +61,16 @@ functions:
       - http:
           method: post
           path: items
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
           authorizer:
             type: COGNITO_USER_POOLS
             authorizerId:
@@ -74,7 +84,16 @@ functions:
       - http:
           method: get
           path: items
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
           authorizer:
             type: COGNITO_USER_POOLS
             authorizerId:
@@ -85,7 +104,16 @@ functions:
       - http:
           method: get
           path: items/{id}
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
           authorizer:
             type: COGNITO_USER_POOLS
             authorizerId:
@@ -96,7 +124,16 @@ functions:
       - http:
           method: put
           path: items/{id}
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
           authorizer:
             type: COGNITO_USER_POOLS
             authorizerId:
@@ -107,7 +144,16 @@ functions:
       - http:
           method: delete
           path: items/{id}
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
           authorizer:
             type: COGNITO_USER_POOLS
             authorizerId:
@@ -118,7 +164,16 @@ functions:
       - http:
           method: get
           path: getRating
-          cors: true
+          cors:
+            origin: '*' # <-- Specify allowed origin
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
 
 custom:
   dynamodbTableName: ${self:service.name}-${self:provider.stage}-table

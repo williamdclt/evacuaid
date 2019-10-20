@@ -10,9 +10,10 @@ export const main = async (event: Event): Promise<APIGatewayProxyResult> => {
   }
   const params: QueryInput = {
     TableName: process.env.tableName,
-    KeyConditionExpression: 'userId = :userId',
+    KeyConditionExpression: 'username = :u',
+    IndexName: 'usernameIndex',
     ExpressionAttributeValues: {
-      ':userId': event.requestContext.authorizer.claims['cognito:username'],
+      ':u': event.requestContext.authorizer.claims['cognito:username'],
     },
   };
 
