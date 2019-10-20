@@ -21,7 +21,7 @@ const Dashboard: React.FunctionComponent = () => {
     : '';
   React.useEffect(
     () => {
-      setTimeout(() => (address ? getRating(address).then(setRating) : setRating(0)), 1000);
+      setTimeout(() => (address ? getRating(address).then(setRating) : setRating(24)), 1000);
     },
     [address, setRating],
   );
