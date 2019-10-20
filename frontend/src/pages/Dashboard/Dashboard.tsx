@@ -15,9 +15,12 @@ const Dashboard: React.FunctionComponent = () => {
     ? `${userData.addressLine1 || ''} ${userData.addressLine1 || ''} ${userData.countyOrState ||
         ''} ${userData.postCode || ''}`
     : '';
-  React.useEffect(() => {
-    setTimeout(() => getRating(address).then(setRating), 1000);
-  }, []);
+  React.useEffect(
+    () => {
+      setTimeout(() => getRating(address).then(setRating), 1000);
+    },
+    [address],
+  );
 
   const data: ChartData = {
     datasets: [
