@@ -17,9 +17,24 @@ export const loginUser = createAsyncAction(
   }
 >();
 
+export const getUserInfo = createAsyncAction(
+  'Login/USER_INFO_REQUEST',
+  'Login/USER_INFO_SUCCESS',
+  'Login/USER_INFO_FAILURE',
+)<
+  undefined,
+  {
+    token: string;
+  },
+  {
+    errorMessage: string;
+  }
+>();
+
 export const logoutUser = { type: 'Logout/USER_LOGOUT', payload: {} };
 
 export default {
   loginUser,
   logoutUser,
+  getUserInfo,
 };

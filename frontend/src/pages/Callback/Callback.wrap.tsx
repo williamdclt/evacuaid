@@ -8,6 +8,7 @@ import Callback from './Callback';
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   loginUser: (token: string) => dispatch(actions.loginUser.success({ token })),
   push: (pathName: string) => dispatch(push(pathName)),
+  getUserInfo: () => dispatch(actions.getUserInfo.request()),
 });
 
 export default connect(

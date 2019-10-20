@@ -5,10 +5,10 @@ import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import PutItemInput = DocumentClient.PutItemInput;
 import { success, failure, Event } from './libs/response';
 
-export const main = async (event: Event): Promise<APIGatewayProxyResult> => {
-  // Request body is passed in as a JSON encoded string in 'event.body'
-  const data: { content: string } = JSON.parse(event.body);
-
+export const createItem = async (
+  data: { objectType: string },
+  username: string,
+) => {
   if (!process.env.tableName) {
     throw new Error('env.tableName must be defined');
   }
@@ -16,9 +16,10 @@ export const main = async (event: Event): Promise<APIGatewayProxyResult> => {
   const params: PutItemInput = {
     TableName: process.env.tableName,
     Item: {
-      username: event.requestContext.authorizer.claims['cognito:username'],
+      username,
       uuid: uuid.v1(),
-      content: data.content,
+      json: data,
+      objectType: data.objectType,
       createdAt: Date.now(),
     },
   };
@@ -30,4 +31,13 @@ export const main = async (event: Event): Promise<APIGatewayProxyResult> => {
   } catch (e) {
     return failure({ status: false, error: e.message });
   }
+};
+
+export const main = async (event: Event): Promise<APIGatewayProxyResult> => {
+  // Request body is passed in as a JSON encoded string in 'event.body'
+  const data: { objectType: string } = JSON.parse(event.body);
+  return createItem(
+    data,
+    event.requestContext.authorizer.claims['cognito:username'],
+  );
 };

@@ -28,13 +28,12 @@ class Client {
     this.agent = request.agent();
     // @ts-ignore
     this.agent.accept('application/json');
-    // @ts-ignore
-    this.agent.withCredentials();
   }
 
   async request(
     method: Method,
     endpoint: string,
+    token: string,
     data: object | null = null,
     checkToken: boolean = true,
   ) {
@@ -44,7 +43,6 @@ class Client {
     const url = /^https?:\/\//.test(endpoint) ? endpoint : `${this.baseUrl}${endpoint}`;
     let promise = this.agent[method](url);
 
-    const token = this.getToken();
     if (token) {
       promise = promise.set('Authorization', `Bearer ${token}`);
     }
@@ -81,16 +79,16 @@ class Client {
     }
   }
 
-  get(endpoint: string) {
-    return this.request('get', endpoint);
+  get(endpoint: string, token: string) {
+    return this.request('get', endpoint, token);
   }
 
-  post(endpoint: string, data: object) {
-    return this.request('post', endpoint, data);
+  post(endpoint: string, token: string, data: object) {
+    return this.request('post', endpoint, token, data);
   }
 
-  put(endpoint: string, data: object) {
-    return this.request('put', endpoint, data);
+  put(endpoint: string, data: object, token: string) {
+    return this.request('put', endpoint, token, data);
   }
 
   async login(data: { email: string; password: string }) {
@@ -107,7 +105,7 @@ class Client {
   }
 
   async refreshToken() {
-    const { access } = await this.request('post', '/auth/jwt/refresh', {}, false);
+    const { access } = await this.request('post', '/auth/jwt/refresh', '', {}, false);
     this.updateToken(access);
   }
 }

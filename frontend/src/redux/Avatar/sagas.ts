@@ -8,8 +8,8 @@ import { fetchUser } from './actions';
 export function* fetchUserSaga(action: ActionType<typeof fetchUser.request>) {
   const endpoint = `/users/${action.payload.username}`;
   try {
-    const response = yield call([client, client.get], endpoint);
-    yield put(fetchUser.success({ user: response.body }));
+    // const response = yield call([client, client.get], endpoint);
+    // yield put(fetchUser.success({ user: response.body }));
   } catch (error) {
     yield put(fetchUser.failure({ errorMessage: error.message }));
   }
