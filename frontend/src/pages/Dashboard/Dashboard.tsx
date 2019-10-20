@@ -7,6 +7,7 @@ import { getRating } from '../../services/networking/rating';
 import './Dashboard.style.scss';
 import { ChartData } from 'chart.js';
 import { RootState } from 'redux/types';
+import Map from './Map';
 
 const Dashboard: React.FunctionComponent = () => {
   const [rating, setRating] = React.useState<number>();
@@ -49,6 +50,8 @@ const Dashboard: React.FunctionComponent = () => {
           <p className="mb-md">
             There are no reported crisis in your area, nor are there evacuees looking for help.
           </p>
+          {/* {address && <iframe width="400" height="150" style={{ border: 0, scrolling:"no", marginheight="0" marginwidth="0" }} src={`https://www.google.com/maps/embed/v1/place?q=${address}&zoom=12&key=AIzaSyBqO84g7HUzm3KO9KePCuUOtGK9EcjVjFA`} /> } */}
+            <Map />
         </div>
         <div className="col-6">
           <div className="home__risk">

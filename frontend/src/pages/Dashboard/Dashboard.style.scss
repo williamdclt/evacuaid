@@ -39,7 +39,20 @@
     }
   }
 
+  &__map {
+    width: 400px;
+    height: 150px;
+  }
+
   &__risk {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__chart {
+      position: relative;
+    }
     &__caption {
       margin-top: 1rem;
       font-weight: 300;
@@ -51,10 +64,10 @@
 
     &__score {
       position: absolute;
-      top: 0;
+      top: 0.5rem;
       left: 0;
       right: 0;
-      bottom: 2.25rem;
+      bottom: 0;
       display: flex;
       align-items: center;
       justify-content: center;
