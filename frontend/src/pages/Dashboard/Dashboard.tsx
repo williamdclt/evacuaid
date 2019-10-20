@@ -71,16 +71,16 @@ const Dashboard: React.FunctionComponent = () => {
         </div>
       </div>
       <div className="home__portal">
-        <div className="home__portal__item">View collectives near me</div>
-        <div className="home__portal__item">My offer for accommodation</div>
-        <div className="home__portal__item">The resources I need</div>
-        <div className="home__portal__item">The resources I can provide</div>
         <RouterLink className="home__portal__item" to={PATHS.EVENTS}>
           Live Events
         </RouterLink>
         <RouterLink className="home__portal__item" to={PATHS.BOT}>
-          EvacuBot 🤖
+          EvacuBot
         </RouterLink>
+        <div className="home__portal__item">View collectives near me</div>
+        <div className="home__portal__item">My offer for accommodation</div>
+        <div className="home__portal__item">The resources I need</div>
+        <div className="home__portal__item">The resources I can provide</div>
       </div>
     </div>
   );
