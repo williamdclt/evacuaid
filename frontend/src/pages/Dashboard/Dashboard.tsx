@@ -5,6 +5,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { getRating } from '../../services/networking/rating';
 import { PATHS } from 'routes';
 import { Link as RouterLink } from 'react-router-dom';
+import Button from 'components/Button';
 
 import './Dashboard.style.scss';
 import { ChartData } from 'chart.js';
@@ -44,9 +45,14 @@ const Dashboard: React.FunctionComponent = () => {
         <div className="col-6">
           <h2 className="page-title">My Dashboard</h2>
           <div className="mb-md">
+            <a href="javascript:$zopim.livechat.window.show();">
+              <Button>+&nbsp;&nbsp;Report a Crisis</Button>
+            </a>
+          </div>
+          <div className="mb-md">
             <Icon icon="warning-sign" color="#5eb7b7" iconSize={24} />
             &nbsp;
-            <strong>Current status:</strong> <span className="bold">inactive</span>
+            <strong>Current status:</strong> <span className="bold">Inactive</span>
           </div>
           <p className="mb-md">
             There are no reported crisis in your area, nor are there evacuees looking for help.
