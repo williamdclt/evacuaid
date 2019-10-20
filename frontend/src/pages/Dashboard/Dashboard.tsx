@@ -72,6 +72,9 @@ const Dashboard: React.FunctionComponent = () => {
         <RouterLink className="home__portal__item" to={PATHS.EVENTS}>
           Live Events
         </RouterLink>
+        <RouterLink className="home__portal__item" to={PATHS.BOT}>
+          EvacuBot 🤖
+        </RouterLink>
       </div>
     </div>
   );
